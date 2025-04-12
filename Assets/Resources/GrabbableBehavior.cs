@@ -8,9 +8,9 @@ using System.Collections.Generic;
 public class GrabbableBehavior : MonoBehaviour
 {
     public enum GrabType { None, Free, Snap };
-    public Rigidbody rigidbody;
-    public GameObject grabber;
-    public bool wasKinematic;
+    private Rigidbody rigidbody;
+    private GameObject grabber;
+    private bool wasKinematic;
     public GrabType grabType = GrabType.Free;
 
     public bool isHeld = false;
@@ -23,6 +23,7 @@ public class GrabbableBehavior : MonoBehaviour
 
     public void TryGrab(GameObject grabber)
     {
+        Debug.Log("TryGrab");
         switch(grabType)
         {
             case GrabType.None:
