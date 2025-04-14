@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da24d0d052da37344b97d11219fea50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strFloor: 
   player: {fileID: 0}
+  FloorTag: Floot
+  RideableTag: Ridable
   maxDistance: 5
   allowedMaterial: {fileID: 2100000, guid: 606b2a8691687d241872ad422fef371c, type: 2}
   unallowedMaterial: {fileID: 2100000, guid: 0b7eb9b9985af0848a80c9a1c1a8992c, type: 2}

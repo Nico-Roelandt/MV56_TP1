@@ -10,10 +10,12 @@ public class TeleporterBehavior : MonoBehaviour
 
     private bool pointerVisible = false;
     private Vector3 destinationPosition;
+    private Quaternion destinationRotation;
     private LineRenderer lineRenderer;
-    public String strFloor;
     public GameObject player;
-    public TagHandle floorTag;
+    public String FloorTag;
+    public String RideableTag;
+    
     public float maxDistance = 5f;
 
     public Material allowedMaterial;
@@ -48,6 +50,9 @@ public class TeleporterBehavior : MonoBehaviour
         if (player)
         {
             player.transform.position = destinationPosition;
+            destinationRotation.x = player.transform.rotation.x;
+            destinationRotation.z = player.transform.rotation.z;
+            player.transform.rotation = destinationRotation;
         }
     }
 
@@ -79,10 +84,20 @@ public class TeleporterBehavior : MonoBehaviour
                     maxDistance))
             {
                 lineRenderer.SetPosition(1, transform.position + transform.forward * hit.distance);
-                if (hit.collider.gameObject.CompareTag(strFloor))
+                if (hit.collider.gameObject.CompareTag(FloorTag))
                 {
+                    Debug.Log(FloorTag);
                     canTeleport = true;
                     destinationPosition = hit.point;
+                    lineRenderer.material = allowedMaterial;
+                }
+                else if (hit.collider.gameObject.CompareTag(RideableTag))
+                {
+                    Debug.Log("Rideable");
+                    canTeleport = true;
+                    destinationPosition.x = hit.collider.gameObject.transform.position.x;
+                    destinationPosition.z = hit.collider.gameObject.transform.position.z;
+                    destinationRotation.y = hit.collider.gameObject.transform.rotation.y;
                     lineRenderer.material = allowedMaterial;
                 }
                 else

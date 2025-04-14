@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Floot
+  - Ridable
   layers:
   - Default
   - TransparentFX
