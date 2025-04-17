@@ -101,7 +101,7 @@ public class TeleporterBehavior : MonoBehaviour
                     lineRenderer.material = allowedMaterial;
                 }
                 else
-                {
+                { 
                     canTeleport = false;
                     lineRenderer.material = unallowedMaterial;
                 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floot
   - Ridable
+  - SnapCubeInvisible
   layers:
   - Default
   - TransparentFX
