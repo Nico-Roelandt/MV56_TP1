@@ -10,9 +10,9 @@ public class SnapOnPoint : MonoBehaviour
     }
 
     // Update is called once per frame
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject == PointToSnap)
+        if (other.gameObject == PointToSnap && GetComponentInParent<GrabbableBehavior>().isHeld != true)
         {
             transform.position = PointToSnap.transform.position;
             transform.rotation = PointToSnap.transform.rotation;
@@ -20,6 +20,20 @@ public class SnapOnPoint : MonoBehaviour
             if (rb != null)
             {
                 rb.isKinematic = true;
+            }
+        }
+        
+    }
+    
+    
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == PointToSnap)
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.isKinematic = false;
             }
         }
         
